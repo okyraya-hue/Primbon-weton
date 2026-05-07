@@ -20,12 +20,11 @@ body{
   background:linear-gradient(135deg,#0f172a,#111827,#1e293b);
   color:white;
   min-height:100vh;
-  overflow-x:hidden;
 }
 
 .container{
   width:90%;
-  max-width:700px;
+  max-width:720px;
   margin:auto;
   padding:30px 0;
 }
@@ -33,7 +32,7 @@ body{
 .card{
   background:rgba(255,255,255,0.06);
   border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
   border-radius:24px;
   padding:30px;
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
@@ -44,31 +43,49 @@ body{
   margin-bottom:20px;
 }
 
-.logo{
-  width:110px;
-  height:110px;
-  border-radius:50%;
+/* HAPUS CSS .logo LAMA
+LALU GANTI DENGAN CSS INI */
+
+.logo-img{
+  width:140px;
+  height:140px;
+  object-fit:contain;
+  display:block;
   margin:auto;
-  background:linear-gradient(135deg,#facc15,#f97316,#ef4444);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:48px;
-  box-shadow:0 0 35px rgba(249,115,22,.45);
-  border:4px solid rgba(255,255,255,0.15);
+  filter:
+    drop-shadow(0 0 20px #c026ff)
+    drop-shadow(0 0 40px rgba(192,38,255,.4));
+  animation:floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-8px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
 }
 
 .logo-title{
   margin-top:12px;
-  font-size:14px;
   letter-spacing:3px;
+  font-size:14px;
   opacity:.8;
 }
 
 h1{
   text-align:center;
   margin-bottom:10px;
-  font-size:32px;
+  font-size:34px;
   font-weight:700;
   background:linear-gradient(to right,#facc15,#f97316);
   -webkit-background-clip:text;
@@ -96,36 +113,36 @@ input{
   padding:15px;
   border:none;
   border-radius:14px;
-  outline:none;
-  font-size:16px;
   background:#1e293b;
   color:white;
+  font-size:16px;
+  outline:none;
 }
 
 button{
   width:100%;
-  padding:16px;
+  padding:15px;
   border:none;
   border-radius:14px;
-  color:white;
   font-size:16px;
   font-weight:700;
   cursor:pointer;
   transition:.3s;
-}
-
-.main-btn{
-  background:linear-gradient(135deg,#f59e0b,#ef4444);
+  color:white;
 }
 
 button:hover{
   transform:scale(1.02);
 }
 
+.main-btn{
+  background:linear-gradient(135deg,#f59e0b,#ef4444);
+}
+
 .result{
   margin-top:30px;
   display:none;
-  animation:fade .6s ease;
+  animation:fade .5s ease;
 }
 
 .box{
@@ -137,8 +154,8 @@ button:hover{
 }
 
 .box h3{
-  margin-bottom:10px;
   color:#facc15;
+  margin-bottom:10px;
 }
 
 .action-buttons{
@@ -156,9 +173,44 @@ button:hover{
   background:linear-gradient(135deg,#3b82f6,#2563eb);
 }
 
-footer{
+.donate-btn{
+  margin-top:12px;
+  background:linear-gradient(135deg,#facc15,#f59e0b);
+  color:#111827;
+}
+
+.dana-box{
+  margin-top:20px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:20px;
   text-align:center;
+  display:none;
+  animation:fade .5s ease;
+}
+
+.dana-box h3{
+  color:#facc15;
+  margin-bottom:10px;
+}
+
+.dana-number{
+  margin-top:15px;
+  font-size:26px;
+  font-weight:700;
+  color:#facc15;
+  letter-spacing:2px;
+}
+
+.copy-dana{
+  margin-top:15px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+footer{
   margin-top:35px;
+  text-align:center;
   opacity:.7;
   font-size:14px;
 }
@@ -177,7 +229,7 @@ footer{
 @media(max-width:600px){
 
   h1{
-    font-size:26px;
+    font-size:28px;
   }
 
   .card{
@@ -189,52 +241,31 @@ footer{
   }
 
 }
-<!-- TAMBAHKAN CSS INI DI DALAM <style> -->
 
-.donate-btn{
-  background:linear-gradient(135deg,#facc15,#f59e0b);
-  color:#111827;
-}
-
-.dana-box{
-  margin-top:20px;
-  padding:18px;
-  border-radius:18px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  text-align:center;
-  display:none;
-  animation:fade .5s ease;
-}
-
-.dana-number{
-  margin-top:10px;
-  font-size:24px;
-  font-weight:700;
-  color:#facc15;
-  letter-spacing:2px;
-}
-
-.copy-dana{
-  margin-top:15px;
-  background:linear-gradient(135deg,#22c55e,#16a34a);
-}
 </style>
 </head>
 <body>
 
 <div class="container">
+
   <div class="card">
 
-    <!-- LOGO -->
-    <div class="logo-wrap">
+  <!-- GANTI BAGIAN LOGO LAMA DENGAN INI -->
 
-      <div class="logo1.png">
-        
-      </div>
+<div class="logo-wrap">
 
-      <div class="logo-title">
-        PRIMBON MakrKie DIGITAL
+  <!-- LOGO -->
+  <img 
+    src="logo1.png"
+    alt="Logo Primbon"
+    class="logo-img"
+  >
+
+  <div class="logo-title">
+    PRIMBON DIGITAL
+  </div>
+
+</div>
       </div>
 
     </div>
@@ -245,15 +276,21 @@ footer{
       Ramalan weton, karier, keuangan & unsur alam berdasarkan tanggal lahir
     </p>
 
+    <!-- INPUT -->
     <div class="input-group">
+
       <label>Masukkan Tanggal Lahir</label>
+
       <input type="date" id="tanggalLahir">
+
     </div>
 
+    <!-- BUTTON -->
     <button class="main-btn" onclick="hitungPrimbon()">
       ✨ Lihat Ramalan
     </button>
 
+    <!-- HASIL -->
     <div class="result" id="hasil">
 
       <div class="box">
@@ -286,7 +323,7 @@ footer{
         <p id="sifat"></p>
       </div>
 
-      <!-- BUTTON -->
+      <!-- SHARE -->
       <div class="action-buttons">
 
         <button class="share-btn" onclick="shareResult()">
@@ -298,29 +335,32 @@ footer{
         </button>
 
       </div>
-<!-- BUTTON DONASI -->
-<button class="donate-btn" onclick="showDana()">
-  💛 Donasi DANA
-</button>
 
-<!-- BOX DANA -->
-<div class="dana-box" id="danaBox">
+      <!-- DONASI -->
+      <button class="donate-btn" onclick="toggleDana()">
+        💛 Donasi via DANA
+      </button>
 
-  <h3>💛 Dukungan Pengembang</h3>
+      <!-- BOX DANA -->
+      <div class="dana-box" id="danaBox">
 
-  <p>
-    Terima kasih sudah mendukung Primbon Weton Digital
-  </p>
+        <h3>💛 Dukungan Pengembang</h3>
 
-  <div class="dana-number" id="danaNumber">
-    0895-1323-7203
-  </div>
+        <p>
+          Terima kasih sudah mendukung website ini
+        </p>
 
-  <button class="copy-dana" onclick="copyDana()">
-    📋 Copy Nomor DANA
-  </button>
+        <!-- GANTI NOMOR DANA DI SINI -->
+        <div class="dana-number" id="danaNumber">
+          0895-1323-7203
+        </div>
 
-</div>
+        <button class="copy-dana" onclick="copyDana()">
+          📋 Copy Nomor DANA
+        </button>
+
+      </div>
+
     </div>
 
     <footer>
@@ -328,6 +368,7 @@ footer{
     </footer>
 
   </div>
+
 </div>
 
 <script>
@@ -387,7 +428,8 @@ const uangList = [
 
 function hitungPrimbon(){
 
-  const input = document.getElementById("tanggalLahir").value;
+  const input =
+    document.getElementById("tanggalLahir").value;
 
   if(!input){
     alert("Silakan isi tanggal lahir terlebih dahulu");
@@ -407,18 +449,24 @@ function hitungPrimbon(){
 
   const unsur = unsurList[total % 4];
 
-  const karir = karirList[total % karirList.length];
+  const karir =
+    karirList[total % karirList.length];
 
-  const uang = uangList[total % uangList.length];
+  const uang =
+    uangList[total % uangList.length];
 
   let sifat = "";
 
   if(total % 2 === 0){
+
     sifat =
     "Kamu memiliki aura positif, mudah disukai dan punya semangat besar untuk berkembang.";
+
   }else{
+
     sifat =
     "Kamu dikenal intuitif, tenang, dan memiliki pemikiran yang dalam.";
+
   }
 
   document.getElementById("hari").innerHTML =
@@ -439,28 +487,27 @@ function hitungPrimbon(){
   document.getElementById("sifat").innerHTML =
     sifat;
 
-  document.getElementById("hasil").style.display = "block";
+  document.getElementById("hasil").style.display =
+    "block";
 
 }
 
 function getResultText(){
 
-return `
+  return `
 ✨ HASIL PRIMBON ✨
 
-📅 ${document.getElementById("hari").innerText}
+${document.getElementById("hari").innerText}
 
-🌙 ${document.getElementById("weton").innerText}
+${document.getElementById("weton").innerText}
 
-🔥 ${document.getElementById("unsur").innerText}
+${document.getElementById("unsur").innerText}
 
 💼 ${document.getElementById("karir").innerText}
 
 💰 ${document.getElementById("keuangan").innerText}
 
 ✨ ${document.getElementById("sifat").innerText}
-
-🔮 Dibuat di Primbon Nusantara
 `;
 
 }
@@ -472,7 +519,7 @@ function shareResult(){
   if(navigator.share){
 
     navigator.share({
-      title:"Primbon Nusantara",
+      title:"Primbon Weton",
       text:text
     });
 
@@ -493,8 +540,8 @@ function shareLink(){
   if(navigator.share){
 
     navigator.share({
-      title:"Primbon Nusantara",
-      text:"Coba web Primbon Weton Digital ini",
+      title:"Primbon Weton",
+      text:"Coba website Primbon Weton ini 🔮",
       url:url
     });
 
@@ -502,9 +549,37 @@ function shareLink(){
 
     navigator.clipboard.writeText(url);
 
-    alert("Link website berhasil dicopy!");
+    alert("Link berhasil dicopy!");
 
   }
+
+}
+
+function toggleDana(){
+
+  const box =
+    document.getElementById("danaBox");
+
+  if(box.style.display === "block"){
+
+    box.style.display = "none";
+
+  }else{
+
+    box.style.display = "block";
+
+  }
+
+}
+
+function copyDana(){
+
+  const dana =
+    document.getElementById("danaNumber").innerText;
+
+  navigator.clipboard.writeText(dana);
+
+  alert("Nomor DANA berhasil dicopy!");
 
 }
 
