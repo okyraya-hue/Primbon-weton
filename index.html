@@ -298,7 +298,29 @@ footer{
         </button>
 
       </div>
+<!-- BUTTON DONASI -->
+<button class="donate-btn" onclick="showDana()">
+  💛 Donasi DANA
+</button>
 
+<!-- BOX DANA -->
+<div class="dana-box" id="danaBox">
+
+  <h3>💛 Dukungan Pengembang</h3>
+
+  <p>
+    Terima kasih sudah mendukung Primbon Weton Digital
+  </p>
+
+  <div class="dana-number" id="danaNumber">
+    0895-1323-7203
+  </div>
+
+  <button class="copy-dana" onclick="copyDana()">
+    📋 Copy Nomor DANA
+  </button>
+
+</div>
     </div>
 
     <footer>
@@ -472,7 +494,7 @@ function shareLink(){
 
     navigator.share({
       title:"Primbon Nusantara",
-      text:"Coba web Primbon Nusantara ini 🔮",
+      text:"Coba web Primbon Weton Digital ini",
       url:url
     });
 
