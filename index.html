@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Primbon Weton</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primbon Weton Digital</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -38,17 +39,30 @@ body{
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
+.logo-wrap{
+  text-align:center;
+  margin-bottom:20px;
+}
+
 .logo{
-  width:100px;
-  height:100px;
-  margin:0 auto 15px;
+  width:110px;
+  height:110px;
   border-radius:50%;
+  margin:auto;
   background:linear-gradient(135deg,#facc15,#f97316,#ef4444);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:42px;
-  box-shadow:0 0 30px rgba(249,115,22,.5);
+  font-size:48px;
+  box-shadow:0 0 35px rgba(249,115,22,.45);
+  border:4px solid rgba(255,255,255,0.15);
+}
+
+.logo-title{
+  margin-top:12px;
+  font-size:14px;
+  letter-spacing:3px;
+  opacity:.8;
 }
 
 h1{
@@ -93,12 +107,15 @@ button{
   padding:16px;
   border:none;
   border-radius:14px;
-  background:linear-gradient(135deg,#f59e0b,#ef4444);
   color:white;
-  font-size:17px;
+  font-size:16px;
   font-weight:700;
   cursor:pointer;
   transition:.3s;
+}
+
+.main-btn{
+  background:linear-gradient(135deg,#f59e0b,#ef4444);
 }
 
 button:hover{
@@ -124,6 +141,21 @@ button:hover{
   color:#facc15;
 }
 
+.action-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+}
+
+.share-btn{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.link-btn{
+  background:linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
 footer{
   text-align:center;
   margin-top:35px;
@@ -142,30 +174,6 @@ footer{
   }
 }
 
-.share-container{
-  display:flex;
-  gap:10px;
-  margin-top:15px;
-}
-
-.share-btn{
-  flex:1;
-  background:linear-gradient(135deg,#22c55e,#16a34a);
-}
-
-.copy-btn{
-  flex:1;
-  background:linear-gradient(135deg,#3b82f6,#2563eb);
-}
-
-.logo-text{
-  text-align:center;
-  margin-bottom:20px;
-  font-size:14px;
-  opacity:.8;
-  letter-spacing:2px;
-}
-
 @media(max-width:600px){
 
   h1{
@@ -176,10 +184,12 @@ footer{
     padding:22px;
   }
 
-  .share-container{
-    flex-direction:column;
+  .action-buttons{
+    grid-template-columns:1fr;
   }
+
 }
+
 </style>
 </head>
 <body>
@@ -188,11 +198,16 @@ footer{
   <div class="card">
 
     <!-- LOGO -->
-    <div class="logo1.png">
-    </div>
+    <div class="logo-wrap">
 
-    <div class="logo-text">
-      PRIMBON MArKie DIGITAL
+      <div class="logo1.png">
+        🔮
+      </div>
+
+      <div class="logo-title">
+        PRIMBON MakrKie DIGITAL
+      </div>
+
     </div>
 
     <h1>PRIMBON WETON</h1>
@@ -206,7 +221,7 @@ footer{
       <input type="date" id="tanggalLahir">
     </div>
 
-    <button onclick="hitungPrimbon()">
+    <button class="main-btn" onclick="hitungPrimbon()">
       ✨ Lihat Ramalan
     </button>
 
@@ -242,15 +257,15 @@ footer{
         <p id="sifat"></p>
       </div>
 
-      <!-- TOMBOL SHARE -->
-      <div class="share-container">
+      <!-- BUTTON -->
+      <div class="action-buttons">
 
         <button class="share-btn" onclick="shareResult()">
-          📲 Share
+          📲 Share Hasil
         </button>
 
-        <button class="copy-btn" onclick="copyResult()">
-          📋 Copy
+        <button class="link-btn" onclick="shareLink()">
+          🔗 Share Link
         </button>
 
       </div>
@@ -258,7 +273,7 @@ footer{
     </div>
 
     <footer>
-      © 2026 Primbon Weton Digital• MarKie Webinger
+      © 2026 Primbon Weton Digital • MarKie Webinger
     </footer>
 
   </div>
@@ -379,8 +394,8 @@ function hitungPrimbon(){
 
 function getResultText(){
 
-  return `
-✨ HASIL PRIMBON SAYA ✨
+return `
+✨ HASIL PRIMBON ✨
 
 📅 ${document.getElementById("hari").innerText}
 
@@ -394,7 +409,7 @@ function getResultText(){
 
 ✨ ${document.getElementById("sifat").innerText}
 
-@MarKie Webinger
+🔮 Dibuat di Primbon Nusantara
 `;
 
 }
@@ -417,15 +432,29 @@ function shareResult(){
     alert("Hasil berhasil disalin!");
 
   }
+
 }
 
-function copyResult(){
+function shareLink(){
 
-  const text = getResultText();
+  const url = window.location.href;
 
-  navigator.clipboard.writeText(text);
+  if(navigator.share){
 
-  alert("Hasil primbon berhasil dicopy!");
+    navigator.share({
+      title:"Primbon Nusantara",
+      text:"Coba web Primbon Nusantara ini 🔮",
+      url:url
+    });
+
+  }else{
+
+    navigator.clipboard.writeText(url);
+
+    alert("Link website berhasil dicopy!");
+
+  }
+
 }
 
 </script>
