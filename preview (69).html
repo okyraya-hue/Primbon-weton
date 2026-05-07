@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Primbon Nusantara</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#0f172a,#111827,#1e293b);
+  color:white;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.container{
+  width:90%;
+  max-width:700px;
+  margin:auto;
+  padding:30px 0;
+}
+
+.card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+  text-align:center;
+  margin-bottom:10px;
+  font-size:32px;
+  font-weight:700;
+  background:linear-gradient(to right,#facc15,#f97316);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+  text-align:center;
+  opacity:.8;
+  margin-bottom:30px;
+}
+
+.input-group{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:14px;
+  outline:none;
+  font-size:16px;
+  background:#1e293b;
+  color:white;
+}
+
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,#f59e0b,#ef4444);
+  color:white;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.02);
+}
+
+.result{
+  margin-top:30px;
+  display:none;
+  animation:fade .6s ease;
+}
+
+.box{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:18px;
+  margin-bottom:18px;
+  border-left:4px solid #f59e0b;
+}
+
+.box h3{
+  margin-bottom:10px;
+  color:#facc15;
+}
+
+footer{
+  text-align:center;
+  margin-top:35px;
+  opacity:.7;
+  font-size:14px;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.share-btn{
+  margin-top:10px;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+@media(max-width:600px){
+  h1{
+    font-size:26px;
+  }
+
+  .card{
+    padding:22px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <h1>PRIMBON NUSANTARA</h1>
+    <p class="subtitle">
+      Ramalan weton, karier, keuangan & unsur alam berdasarkan tanggal lahir
+    </p>
+
+    <div class="input-group">
+      <label>Masukkan Tanggal Lahir</label>
+      <input type="date" id="tanggalLahir">
+    </div>
+
+    <button onclick="hitungPrimbon()">Lihat Ramalan</button>
+
+    <div class="result" id="hasil">
+
+      <div class="box">
+        <h3>📅 Hari Lahir</h3>
+        <p id="hari"></p>
+      </div>
+
+      <div class="box">
+        <h3>🌙 Weton</h3>
+        <p id="weton"></p>
+      </div>
+
+      <div class="box">
+        <h3>🔥 Unsur Alam</h3>
+        <p id="unsur"></p>
+      </div>
+
+      <div class="box">
+        <h3>💼 Karier</h3>
+        <p id="karir"></p>
+      </div>
+
+      <div class="box">
+        <h3>💰 Nasihat Keuangan</h3>
+        <p id="keuangan"></p>
+      </div>
+
+      <div class="box">
+        <h3>✨ Kepribadian</h3>
+        <p id="sifat"></p>
+      </div>
+
+      <button class="share-btn" onclick="shareResult()">
+        📲 Bagikan Hasil
+      </button>
+
+    </div>
+
+    <footer>
+      © 2026 Primbon Nusantara • Bisa Diakses Offline
+    </footer>
+
+  </div>
+</div>
+
+<script>
+
+const hariList = [
+  "Minggu",
+  "Senin",
+  "Selasa",
+  "Rabu",
+  "Kamis",
+  "Jumat",
+  "Sabtu"
+];
+
+const wetonList = [
+  "Legi",
+  "Pahing",
+  "Pon",
+  "Wage",
+  "Kliwon"
+];
+
+const unsurList = [
+  {
+    nama:"Api",
+    sifat:"Berani, penuh energi, mudah memimpin dan ambisius."
+  },
+  {
+    nama:"Air",
+    sifat:"Tenang, bijaksana, emosional dan mudah memahami orang lain."
+  },
+  {
+    nama:"Tanah",
+    sifat:"Setia, pekerja keras, stabil dan dapat dipercaya."
+  },
+  {
+    nama:"Angin",
+    sifat:"Kreatif, cepat berpikir, suka kebebasan dan mudah beradaptasi."
+  }
+];
+
+const karirList = [
+  "Cocok menjadi pengusaha, pemimpin, atau pekerjaan kreatif.",
+  "Memiliki potensi besar dalam dunia teknologi dan komunikasi.",
+  "Sangat cocok di bidang seni, desain, dan hiburan.",
+  "Berbakat menjadi guru, motivator, atau pembimbing.",
+  "Memiliki jiwa bisnis dan kemampuan mengatur keuangan."
+];
+
+const uangList = [
+  "Hindari pengeluaran impulsif dan mulai belajar investasi.",
+  "Keuangan akan stabil jika disiplin menabung.",
+  "Peluang rezeki datang dari koneksi dan relasi.",
+  "Cocok memiliki usaha sampingan untuk pemasukan tambahan.",
+  "Keberuntungan finansial meningkat saat fokus pada satu tujuan."
+];
+
+function hitungPrimbon(){
+
+  const input = document.getElementById("tanggalLahir").value;
+
+  if(!input){
+    alert("Silakan isi tanggal lahir terlebih dahulu");
+    return;
+  }
+
+  const tgl = new Date(input);
+
+  const hari = hariList[tgl.getDay()];
+
+  const total =
+    tgl.getDate() +
+    (tgl.getMonth()+1) +
+    tgl.getFullYear();
+
+  const weton = wetonList[total % 5];
+
+  const unsur = unsurList[total % 4];
+
+  const karir = karirList[total % karirList.length];
+
+  const uang = uangList[total % uangList.length];
+
+  let sifat = "";
+
+  if(total % 2 === 0){
+    sifat =
+    "Kamu memiliki aura positif, mudah disukai dan punya semangat besar untuk berkembang.";
+  }else{
+    sifat =
+    "Kamu dikenal intuitif, tenang, dan memiliki pemikiran yang dalam.";
+  }
+
+  document.getElementById("hari").innerHTML =
+    "Hari lahirmu adalah <b>" + hari + "</b>";
+
+  document.getElementById("weton").innerHTML =
+    "Weton kelahiranmu adalah <b>" + weton + "</b>";
+
+  document.getElementById("unsur").innerHTML =
+    "<b>" + unsur.nama + "</b> — " + unsur.sifat;
+
+  document.getElementById("karir").innerHTML =
+    karir;
+
+  document.getElementById("keuangan").innerHTML =
+    uang;
+
+  document.getElementById("sifat").innerHTML =
+    sifat;
+
+  document.getElementById("hasil").style.display = "block";
+
+}
+
+function shareResult(){
+
+  const text =
+`✨ Hasil Primbon Saya ✨
+
+📅 ${document.getElementById("hari").innerText}
+🌙 ${document.getElementById("weton").innerText}
+🔥 ${document.getElementById("unsur").innerText}
+
+💼 ${document.getElementById("karir").innerText}
+
+💰 ${document.getElementById("keuangan").innerText}
+`;
+
+  if(navigator.share){
+    navigator.share({
+      title:"Primbon Nusantara",
+      text:text
+    });
+  }else{
+    navigator.clipboard.writeText(text);
+    alert("Hasil berhasil disalin!");
+  }
+}
+
+</script>
+
+</body>
+</html>
